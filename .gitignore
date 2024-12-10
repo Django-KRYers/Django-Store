@@ -1,0 +1,16 @@
+/virt
+venv/
+.venv/
+.env/
+.env
+db.sqlite3
+__pycache__/
+*.py[cod]
+local_settings.py
+*/migrations/*.py
+*/migrations/*.pyc
+*.log
+*.pot
+*.pyo
+*.pyc
+.vscode
