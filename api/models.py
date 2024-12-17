@@ -12,7 +12,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return self.name
+        return self.title
     
 
 class Cart(models.Model):
@@ -20,6 +20,14 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through="ProductCart", related_name='carts')
 
-    # def total_sum_price(self, products):
+    @property
+    def total_sum_price(self):
+        total = 0
+        for product in self.products.all():
+            total += product.price
+        self.total_price = total
 
 
+class ProductCart:
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
