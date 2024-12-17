@@ -18,4 +18,4 @@ class CartSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = () # to be defined
+        fields = '__all__'
